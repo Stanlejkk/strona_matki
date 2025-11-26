@@ -70,22 +70,7 @@
             animation: fadeIn .5s ease forwards;
         }
 
-        .section.textured {
-            position: relative;
-            overflow: hidden;
-            isolation: isolate;
-        }
-
-        .section.textured::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: url('obrazy/marble-strip.svg') center/cover no-repeat;
-            opacity: 0.26;
-            z-index: 0;
-        }
-
-        .section.textured .section-inner {
+        .section .section-inner {
             position: relative;
             z-index: 1;
         }
@@ -101,31 +86,9 @@
 
         .contact-wrapper {
             display: grid;
-            grid-template-columns: 180px 1fr;
+            grid-template-columns: 1fr;
             gap: 30px;
             align-items: start;
-        }
-
-        .contact-palette {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .palette-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 14px;
-            font-weight: bold;
-            text-transform: lowercase;
-        }
-
-        .palette-color {
-            width: 18px;
-            height: 42px;
-            border-radius: 4px;
-            flex-shrink: 0;
         }
 
         .contact-card {
@@ -182,13 +145,6 @@
             letter-spacing: 0.4px;
         }
 
-        .contact-qr img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
 
         .section.active {
             display: block;
@@ -437,7 +393,7 @@
         </div>
         <div class="painting-caption" id="drawingCaption"></div>
     </div>
-    <div id="sekcja4" class="section textured">
+    <div id="sekcja4" class="section">
         <div class="section-inner">
             <div class="section-title-block">
                 <div class="accent-stack">
@@ -485,20 +441,13 @@
             </div>
         </div>
     </div>
-    <div id="sekcja5" class="section textured">
+    <div id="sekcja5" class="section">
         <div class="section-inner">
             <div class="contact-banner">
                 <img src="obrazy/test.jpg" alt="Kolorowe tło na baner kontaktowy" loading="lazy">
             </div>
 
             <div class="contact-wrapper">
-                <div class="contact-palette" aria-label="paleta kolorów artystki">
-                    <div class="palette-item"><span class="palette-color" style="background:#FFD800"></span>żółty impuls</div>
-                    <div class="palette-item"><span class="palette-color" style="background:#C62828"></span>czerwień energii</div>
-                    <div class="palette-item"><span class="palette-color" style="background:#0277BD"></span>chłodny błękit</div>
-                    <div class="palette-item"><span class="palette-color" style="background:#2E7D32"></span>spokojna zieleń</div>
-                </div>
-
                 <div class="contact-card">
                     <div class="contact-details">
                         <h2>Kontakt</h2>
@@ -521,10 +470,6 @@
                                 <small>linkedin.com/in/mariakowalewska</small>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="contact-qr" aria-label="kod QR do zapisania kontaktu">
-                        <img src="obrazy/1.jpg" alt="Kod QR do wizytówki" loading="lazy">
                     </div>
                 </div>
             </div>
