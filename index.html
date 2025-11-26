@@ -16,9 +16,9 @@
         /* MENU */
         .side-menu {
             position: fixed;
-            top: 0;
+            top: 180px;
             left: 0;
-            height: 100vh;
+            height: calc(100vh - 180px);
             width: 260px; /* SZTYWNE */
             padding-top: 120px;
             display: flex;
@@ -28,10 +28,12 @@
 
         .menu-item {
             display: grid;
-            grid-template-columns: 180px auto; /* BLOK KOLORU + TEKST */
+            grid-template-columns: 120px 1fr; /* BLOK KOLORU + TEKST */
             align-items: center;
             cursor: pointer;
             transition: opacity .3s ease;
+            width: 100%;               /* KAŻDA LINIJKA JEST TAK SAMO SZEROKA */
+            max-width: 260px;          /* RÓWNA SZEROKOŚĆ MENU */
         }
 
         .menu-item:hover {
@@ -40,7 +42,7 @@
 
         .menu-color {
             height: 30px;
-            width: 180px;      /* KAŻDY PROSTOKĄT IDENTYCZNY */
+            width: 120px;      /* KAŻDY PROSTOKĄT IDENTYCZNY */
         }
 
         .menu-text {
