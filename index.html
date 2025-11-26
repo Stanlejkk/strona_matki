@@ -13,6 +13,11 @@
             overflow-x: hidden;
         }
 
+        body.painting-mode {
+            background: #000;
+            color: #fff;
+        }
+
         /* MENU */
         .side-menu {
             position: fixed;
@@ -52,6 +57,10 @@
             white-space: nowrap;
         }
 
+        body.painting-mode .menu-text {
+            color: #fff;
+        }
+
         /* SEKCJE */
         .section {
             margin-left: 300px;
@@ -63,6 +72,65 @@
 
         .section.active {
             display: block;
+        }
+
+        /* MALARSTWO */
+        .painting-section {
+            background: #000;
+            color: #fff;
+        }
+
+        .painting-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+
+        .painting-frame {
+            max-width: 70vw;
+            border: 8px solid #fff;
+            background: #111;
+            padding: 12px;
+        }
+
+        .painting-frame img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .painting-caption {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 18px;
+            min-height: 48px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            font-size: 26px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background .2s ease, color .2s ease;
+        }
+
+        .nav-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .nav-btn[disabled] {
+            opacity: 0.3;
+            cursor: not-allowed;
         }
 
         @keyframes fadeIn {
@@ -91,6 +159,16 @@
             .section {
                 margin-left: 0;
                 padding: 40px 20px;
+            }
+
+            .painting-wrapper {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .nav-btn {
+                width: 44px;
+                height: 44px;
             }
         }
 
@@ -146,7 +224,17 @@ W roku 2020 wróciłam do komunikowania się ze światem językiem sztuki. Powr�
 z transcendencją. Ważny jest dla mnie temat dualizmu natury ludzkiej, sąsiadowania pierwiastka boskiego i ziemskiego. Celebruję życie przez malarstwo, tworząc obrazy które są jest afirmacją pozytywnych emocji, wewnętrznej siły, miłości, radości i dobra. 
 Eksploruję złożone i piękne strony ludzkiej natury. Moje intensywne kolory, bogate tekstury symbolizują pasję, moc, spokój.
 </p></div>
-    <div id="sekcja2" class="section"><h1>Malarstwo</h1><p>Treść…</p></div>
+    <div id="sekcja2" class="section painting-section">
+        <h1>Malarstwo</h1>
+        <div class="painting-wrapper">
+            <button class="nav-btn" id="prevPainting" aria-label="Poprzedni obraz">&#8592;</button>
+            <div class="painting-frame">
+                <img id="paintingImage" src="" alt="Obraz malarstwa" loading="lazy">
+            </div>
+            <button class="nav-btn" id="nextPainting" aria-label="Następny obraz">&#8594;</button>
+        </div>
+        <div class="painting-caption" id="paintingCaption"></div>
+    </div>
     <div id="sekcja3" class="section"><h1>Grafika i rysunek</h1><p>Treść…</p></div>
     <div id="sekcja4" class="section"><h1>Wystawy</h1><p>WYSTAWY INDYWIDUALNE:
 ,Monolith’ in the Polish Cultural Institute, London, 7th-27th September 1990
@@ -191,6 +279,12 @@ poeta/dramatopisarz/reżyser, Warszawa 9.07.2023
     <script>
         const menuItems = document.querySelectorAll(".menu-item");
         const sections = document.querySelectorAll(".section");
+        const body = document.body;
+
+        const applyPaintingMode = (targetId) => {
+            const isPainting = targetId === "sekcja2";
+            body.classList.toggle("painting-mode", isPainting);
+        };
 
         menuItems.forEach(item => {
             item.addEventListener("click", () => {
@@ -201,8 +295,82 @@ poeta/dramatopisarz/reżyser, Warszawa 9.07.2023
 
                 sections.forEach(sec => sec.classList.remove("active"));
                 document.getElementById(target).classList.add("active");
+
+                applyPaintingMode(target);
             });
         });
+
+        const initialActive = document.querySelector(".section.active");
+        if (initialActive) {
+            applyPaintingMode(initialActive.id);
+        }
+
+        /* MALARSTWO – prosty slider z plików obrazy/1.jpg, 2.jpg, ... */
+        const paintingImage = document.getElementById("paintingImage");
+        const paintingCaption = document.getElementById("paintingCaption");
+        const prevPainting = document.getElementById("prevPainting");
+        const nextPainting = document.getElementById("nextPainting");
+
+        const paintingData = [];
+        let currentPaintingIndex = 0;
+
+        const updatePainting = () => {
+            if (!paintingData.length) return;
+            const current = paintingData[currentPaintingIndex];
+            paintingImage.src = current.src;
+            paintingImage.alt = current.caption;
+            paintingCaption.textContent = current.caption;
+
+            prevPainting.disabled = currentPaintingIndex === 0;
+            nextPainting.disabled = currentPaintingIndex === paintingData.length - 1;
+        };
+
+        const loadPaintings = async () => {
+            let index = 1;
+
+            while (index <= 100) {
+                const src = `obrazy/${index}.jpg`;
+
+                try {
+                    const response = await fetch(src, { method: "HEAD" });
+                    if (!response.ok) break;
+
+                    paintingData.push({
+                        src,
+                        caption: `Obraz ${index}`
+                    });
+                    index += 1;
+                } catch (err) {
+                    break;
+                }
+            }
+
+            if (!paintingData.length) {
+                paintingCaption.textContent = "Brak obrazów w katalogu.";
+                prevPainting.disabled = true;
+                nextPainting.disabled = true;
+                paintingImage.alt = "Brak obrazów";
+                return;
+            }
+
+            updatePainting();
+        };
+
+        prevPainting.addEventListener("click", () => {
+            if (currentPaintingIndex > 0) {
+                currentPaintingIndex -= 1;
+                updatePainting();
+            }
+        });
+
+        nextPainting.addEventListener("click", () => {
+            if (currentPaintingIndex < paintingData.length - 1) {
+                currentPaintingIndex += 1;
+                updatePainting();
+            }
+        });
+
+        loadPaintings();
     </script>
 
 </body>
