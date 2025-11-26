@@ -247,7 +247,7 @@
             border: 1px solid rgba(0,0,0,0.06);
         }
 
-        /* MALARSTWO */
+        /* MALARSTWO I GRAFIKA */
         .painting-section {
             background: #000;
             color: #fff;
@@ -426,7 +426,17 @@
         </div>
         <div class="painting-caption" id="paintingCaption"></div>
     </div>
-    <div id="sekcja3" class="section"><h1>Grafika i rysunek</h1><p>Treść…</p></div>
+    <div id="sekcja3" class="section painting-section">
+        <h1>Grafika i rysunek</h1>
+        <div class="painting-wrapper">
+            <button class="nav-btn" id="prevDrawing" aria-label="Poprzednia grafika">&#8592;</button>
+            <div class="painting-frame">
+                <img id="drawingImage" src="" alt="Grafika lub rysunek" loading="lazy">
+            </div>
+            <button class="nav-btn" id="nextDrawing" aria-label="Następna grafika">&#8594;</button>
+        </div>
+        <div class="painting-caption" id="drawingCaption"></div>
+    </div>
     <div id="sekcja4" class="section textured">
         <div class="section-inner">
             <div class="section-title-block">
@@ -527,7 +537,7 @@
         const body = document.body;
 
         const applyPaintingMode = (targetId) => {
-            const isPainting = targetId === "sekcja2";
+            const isPainting = targetId === "sekcja2" || targetId === "sekcja3";
             body.classList.toggle("painting-mode", isPainting);
         };
 
@@ -550,72 +560,96 @@
             applyPaintingMode(initialActive.id);
         }
 
-        /* MALARSTWO – prosty slider z plików obrazy/1.jpg, 2.jpg, ... */
-        const paintingImage = document.getElementById("paintingImage");
-        const paintingCaption = document.getElementById("paintingCaption");
-        const prevPainting = document.getElementById("prevPainting");
-        const nextPainting = document.getElementById("nextPainting");
+        /* WSPÓLNY LOADER DLA GALERII */
+        const createGallery = ({
+            folder,
+            imageElement,
+            captionElement,
+            prevButton,
+            nextButton,
+            captionPrefix
+        }) => {
+            const items = [];
+            let currentIndex = 0;
 
-        const paintingData = [];
-        let currentPaintingIndex = 0;
+            const updateView = () => {
+                if (!items.length) return;
+                const current = items[currentIndex];
+                imageElement.src = current.src;
+                imageElement.alt = current.caption;
+                captionElement.textContent = current.caption;
 
-        const updatePainting = () => {
-            if (!paintingData.length) return;
-            const current = paintingData[currentPaintingIndex];
-            paintingImage.src = current.src;
-            paintingImage.alt = current.caption;
-            paintingCaption.textContent = current.caption;
+                prevButton.disabled = currentIndex === 0;
+                nextButton.disabled = currentIndex === items.length - 1;
+            };
 
-            prevPainting.disabled = currentPaintingIndex === 0;
-            nextPainting.disabled = currentPaintingIndex === paintingData.length - 1;
-        };
+            const loadItems = async () => {
+                let index = 1;
 
-        const loadPaintings = async () => {
-            let index = 1;
+                while (index <= 100) {
+                    const src = `${folder}/${index}.jpg`;
 
-            while (index <= 100) {
-                const src = `obrazy/${index}.jpg`;
+                    try {
+                        const response = await fetch(src, { method: "HEAD" });
+                        if (!response.ok) break;
 
-                try {
-                    const response = await fetch(src, { method: "HEAD" });
-                    if (!response.ok) break;
-
-                    paintingData.push({
-                        src,
-                        caption: `Obraz ${index}`
-                    });
-                    index += 1;
-                } catch (err) {
-                    break;
+                        items.push({
+                            src,
+                            caption: `${captionPrefix} ${index}`
+                        });
+                        index += 1;
+                    } catch (err) {
+                        break;
+                    }
                 }
-            }
 
-            if (!paintingData.length) {
-                paintingCaption.textContent = "Brak obrazów w katalogu.";
-                prevPainting.disabled = true;
-                nextPainting.disabled = true;
-                paintingImage.alt = "Brak obrazów";
-                return;
-            }
+                if (!items.length) {
+                    captionElement.textContent = "Brak obrazów w katalogu.";
+                    prevButton.disabled = true;
+                    nextButton.disabled = true;
+                    imageElement.alt = "Brak obrazów";
+                    return;
+                }
 
-            updatePainting();
+                updateView();
+            };
+
+            prevButton.addEventListener("click", () => {
+                if (currentIndex > 0) {
+                    currentIndex -= 1;
+                    updateView();
+                }
+            });
+
+            nextButton.addEventListener("click", () => {
+                if (currentIndex < items.length - 1) {
+                    currentIndex += 1;
+                    updateView();
+                }
+            });
+
+            loadItems();
         };
 
-        prevPainting.addEventListener("click", () => {
-            if (currentPaintingIndex > 0) {
-                currentPaintingIndex -= 1;
-                updatePainting();
-            }
+        /* MALARSTWO – pliki obrazy/1.jpg, 2.jpg, ... */
+        createGallery({
+            folder: "obrazy",
+            imageElement: document.getElementById("paintingImage"),
+            captionElement: document.getElementById("paintingCaption"),
+            prevButton: document.getElementById("prevPainting"),
+            nextButton: document.getElementById("nextPainting"),
+            captionPrefix: "Obraz"
         });
 
-        nextPainting.addEventListener("click", () => {
-            if (currentPaintingIndex < paintingData.length - 1) {
-                currentPaintingIndex += 1;
-                updatePainting();
-            }
+        /* GRAFIKA I RYSUNEK – pliki rysunki/1.jpg, 2.jpg, ... */
+        createGallery({
+            folder: "rysunki",
+            imageElement: document.getElementById("drawingImage"),
+            captionElement: document.getElementById("drawingCaption"),
+            prevButton: document.getElementById("prevDrawing"),
+            nextButton: document.getElementById("nextDrawing"),
+            captionPrefix: "Grafika / rysunek"
         });
-
-        loadPaintings();
     </script>
 
 </body>
