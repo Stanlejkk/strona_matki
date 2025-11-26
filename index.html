@@ -19,19 +19,19 @@
             top: 0;
             left: 0;
             height: 100vh;
-            width: 220px;
+            width: 260px; /* SZTYWNE */
             padding-top: 120px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 22px;
         }
 
         .menu-item {
-            display: flex;
+            display: grid;
+            grid-template-columns: 180px auto; /* BLOK KOLORU + TEKST */
             align-items: center;
             cursor: pointer;
             transition: opacity .3s ease;
-            white-space: nowrap;
         }
 
         .menu-item:hover {
@@ -39,51 +39,51 @@
         }
 
         .menu-color {
-            height: 28px;
-            width: 180px;     /* STAŁA długość prostokątów */
-            margin-right: 10px;
+            height: 30px;
+            width: 180px;      /* KAŻDY PROSTOKĄT IDENTYCZNY */
         }
 
         .menu-text {
             font-family: Arial, sans-serif;
             font-size: 18pt;
+            padding-left: 10px;
+            white-space: nowrap;
         }
 
-        /* Sekcje */
+        /* SEKCJE */
         .section {
-            margin-left: 260px;
-            min-height: 100vh;
+            margin-left: 300px;
             padding: 80px 60px;
+            min-height: 100vh;
             display: none;
-            animation: fadeIn .6s ease forwards;
+            animation: fadeIn .5s ease forwards;
         }
 
         .section.active {
             display: block;
         }
 
-        /* Fade In */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
-            to   { opacity: 1; transform: translateY(0);   }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         /* MOBILE */
         @media (max-width: 768px) {
 
             .side-menu {
-                position: relative;
-                width: 100%;
                 height: auto;
+                width: 100%;
+                position: relative;
                 padding-top: 20px;
             }
 
-            .menu-color {
-                width: 100% !important;
+            .menu-item {
+                grid-template-columns: 120px auto; /* mobilna wersja */
             }
 
-            .menu-item {
-                width: 100%;
+            .menu-color {
+                width: 120px !important;
             }
 
             .section {
@@ -132,8 +132,6 @@
 
     </div>
 
-
-
     <!-- SEKCJE -->
     <div id="sekcja0" class="section active"><h1>Strona główna</h1><p>Treść…</p></div>
     <div id="sekcja1" class="section"><h1>Biografia</h1><p>Treść…</p></div>
@@ -141,8 +139,6 @@
     <div id="sekcja3" class="section"><h1>Grafika i rysunek</h1><p>Treść…</p></div>
     <div id="sekcja4" class="section"><h1>Wystawy</h1><p>Treść…</p></div>
     <div id="sekcja5" class="section"><h1>Kontakt</h1><p>Treść…</p></div>
-
-
 
     <script>
         const menuItems = document.querySelectorAll(".menu-item");
@@ -152,11 +148,9 @@
             item.addEventListener("click", () => {
                 const target = item.getAttribute("data-target");
 
-                // zmiana aktywnego menu
                 menuItems.forEach(i => i.classList.remove("active"));
                 item.classList.add("active");
 
-                // zmiana sekcji
                 sections.forEach(sec => sec.classList.remove("active"));
                 document.getElementById(target).classList.add("active");
             });
