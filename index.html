@@ -70,6 +70,26 @@
             animation: fadeIn .5s ease forwards;
         }
 
+        .section.textured {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .section.textured::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url('obrazy/marble-strip.svg') center/cover no-repeat;
+            opacity: 0.26;
+            z-index: 0;
+        }
+
+        .section.textured .section-inner {
+            position: relative;
+            z-index: 1;
+        }
+
         /* KONTAKT */
         .contact-banner img {
             width: 100%;
@@ -193,15 +213,12 @@
         }
 
         .biography-section .bio-visual {
-            /* Podmień ścieżkę w zmiennej --bio-image-url na własny plik */
-            --bio-image-url: url('obrazy/biografia.jpg');
-
             position: relative;
             min-height: 100%;
             border-radius: 10px;
             overflow: hidden;
             background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
-            background-image: linear-gradient(135deg, rgba(245,245,245,0.9), rgba(224,224,224,0.9)), var(--bio-image-url);
+            background-image: linear-gradient(135deg, rgba(245,245,245,0.9), rgba(224,224,224,0.9)), url('obrazy/biografia.jpg');
             background-size: cover;
             background-position: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -394,7 +411,7 @@
                 </p>
             </div>
             <div class="bio-visual" aria-hidden="true">
-                <span class="placeholder-label">Miejsce na grafikę biografii (ustaw w --bio-image-url)</span>
+                <span class="placeholder-label">Miejsce na grafikę biografii</span>
             </div>
         </div>
     </div>
@@ -410,49 +427,51 @@
         <div class="painting-caption" id="paintingCaption"></div>
     </div>
     <div id="sekcja3" class="section"><h1>Grafika i rysunek</h1><p>Treść…</p></div>
-    <div id="sekcja4" class="section">
-        <div class="section-title-block">
-            <div class="accent-stack">
-                <span class="accent accent-yellow"></span>
-                <span class="accent accent-red"></span>
-                <span class="accent accent-blue"></span>
-            </div>
-            <h1 class="section-title">wystawy i recenzje</h1>
-        </div>
-
-        <div class="exhibitions-wrapper">
-            <div class="exhibition-group">
-                <h3>WYSTAWY INDYWIDUALNE:</h3>
-                <div class="exhibition-lines">
-                    <div class="exhibition-line"><strong>„Monolith”</strong> in the Polish Cultural Institute, London, 7th-27th September 1990</div>
-                    <div class="exhibition-line"><strong>„Do I Dare to disturb the Universe?”</strong> at The Richard Demarco Gallery, Edinburgh, 15th-21st March 1990</div>
+    <div id="sekcja4" class="section textured">
+        <div class="section-inner">
+            <div class="section-title-block">
+                <div class="accent-stack">
+                    <span class="accent accent-yellow"></span>
+                    <span class="accent accent-red"></span>
+                    <span class="accent accent-blue"></span>
                 </div>
+
             </div>
 
-            <div class="exhibition-group">
-                <h3>WYSTAWY GRUPOWE:</h3>
-                <div class="exhibition-lines">
-                    <div class="exhibition-line"><strong>„Prints”</strong>, Gloucestershire College of Arts &amp; Technology, U.K., 1989</div>
-                    <div class="exhibition-line"><strong>„Grafiki”</strong>, Akademia Sztuk Pięknych w Warszawie, Polska, 18th-31th December 1989</div>
-                    <div class="exhibition-line"><strong>M.A. Printmaking Final Show</strong>, University of Brighton, U.K., June 1990</div>
-                    <div class="exhibition-line"><strong>„Art for Offices”</strong>, London, U.K., 1991</div>
-                    <div class="exhibition-line"><strong>„No Easy Answers”</strong>, Smith’s Gallery, Covent Garden, London, U.K., 1991</div>
+            <div class="exhibitions-wrapper">
+                <div class="exhibition-group">
+                    <h3>WYSTAWY INDYWIDUALNE:</h3>
+                    <div class="exhibition-lines">
+                        <div class="exhibition-line"><strong>„Monolith”</strong> in the Polish Cultural Institute, London, 7th-27th September 1990</div>
+                        <div class="exhibition-line"><strong>„Do I Dare to disturb the Universe?”</strong> at The Richard Demarco Gallery, Edinburgh, 15th-21st March 1990</div>
+                    </div>
                 </div>
-            </div>
 
-                <div class="reviews">
-                    <p class="quote">The art of Maria Bartkowiak/Kowalewska embodies the essence of the culture out of which it springs. It is charged with a consuming emotion that is leavened by her manifest interest and knowledge of contemporary thought concerning the visual arts. Her work is a rich admixture of ideas concerning both the formal way in which a work of art conveys itself to the spectator and a view of life or rather a perception of being, that is both personal and informed.</p>
-                    <p class="quote">This makes her work readily accessible to anyone but most particularly to those interested in the fundamental nature of existence.’</p>
-                <p class="quote-author">Lawrence Preece<br><span class="quote-source">for the exhibition „Monolith” in the Polish Cultural Institute, London, 7th-27th September 1990</span></p>
+                <div class="exhibition-group">
+                    <h3>WYSTAWY GRUPOWE:</h3>
+                    <div class="exhibition-lines">
+                        <div class="exhibition-line"><strong>„Prints”</strong>, Gloucestershire College of Arts &amp; Technology, U.K., 1989</div>
+                        <div class="exhibition-line"><strong>„Grafiki”</strong>, Akademia Sztuk Pięknych w Warszawie, Polska, 18th-31th December 1989</div>
+                        <div class="exhibition-line"><strong>M.A. Printmaking Final Show</strong>, University of Brighton, U.K., June 1990</div>
+                        <div class="exhibition-line"><strong>„Art for Offices”</strong>, London, U.K., 1991</div>
+                        <div class="exhibition-line"><strong>„No Easy Answers”</strong>, Smith’s Gallery, Covent Garden, London, U.K., 1991</div>
+                    </div>
+                </div>
 
-                    <p class="quote">The dominant themes of her prints, drawings and paintings concern the polarities of spirit and matter, earth and air, internal and external, knowledge and intuition, faith and despair, freedom and entrapment. These are explored through colours which move from earthbound umbers, ochres and deep red/browns to transcendental grey/blues. Space is created through texture; carefully worked areas suggestive of patina and ageing are contrasted with broader areas of brushwork. The repeated motifs of mask and cage convey trapped public faces and private emotions; The mask, symbol of personal identity, exists within undefinable space; free-floating and directionless. Other works depict man’s relationship with nature, enveloped and protected, yet at the same time vulnerable and mortal.’</p>
-                <p class="quote-author">Fiona Hackney/David Crowley<br><span class="quote-source">for the show „Do I Dare to disturb the Universe?” at The Richard Demarco Gallery, Edinburgh, 15th-21st March 1990</span></p>
+                    <div class="reviews">
+                        <p class="quote">The art of Maria Bartkowiak/Kowalewska embodies the essence of the culture out of which it springs. It is charged with a consuming emotion that is leavened by her manifest interest and knowledge of contemporary thought concerning the visual arts. Her work is a rich admixture of ideas concerning both the formal way in which a work of art conveys itself to the spectator and a view of life or rather a perception of being, that is both personal and informed.</p>
+                        <p class="quote">This makes her work readily accessible to anyone but most particularly to those interested in the fundamental nature of existence.’</p>
+                    <p class="quote-author">Lawrence Preece<br><span class="quote-source">for the exhibition „Monolith” in the Polish Cultural Institute, London, 7th-27th September 1990</span></p>
 
-                <p class="quote">Najbardziej lubię te prace Marii, które są migawkowe, niedogadane. Niby oszczędne, a hojne w horyzont, który otwierają jakby od niechcenia. Choćby ten niepozorny Ikar, taki daleki od wszystkich ikarowych uniesień i upadków. Na luzie, ale czy zrezygnowany czy też gotujący się do próby lotu do dalekiej Sycylii. A może robi kupę przed odlotem?</p>
-                <p class="quote">Sprowadzam, śladem Marii, tego Ikara na ziemię. Która jest częścią Wszechświata, stworzonego mie wiadomo kiedy i przez kogo? Maria dotyka tej tajemnicy w cyklu rysunkoów, też bardzo oszczędnych a przepastnych, jak wszechświat? Cykl „Powstanie świata” jest dla mnie kobiecą wersją kosmogonii. Artystka rodzi Kosmos, z jej ciała bierze się Wszystko.</p>
-                <p class="quote">A może to tylko męski odbiór, wynikający z upośledzenia niemożności rodzenia samemu? Dużo znajduję humoru w tych pracach, niekiedy jakby satyrycznych.  Ale jest to ten humor, który miał na myśli Eta Hoffmann  mówiąc o pochodzeniu humoru „z psychiki śmiertelnie ranionej”.</p>
-                <p class="quote">Nie chcę niczego takiego imputować Marii, jednak wiele prac to właśnie sugeruje. Pozornie powierzchniowe by nie powiedzieć powierzchowne  muśnięcie tuszu po papierze potrafi wnikać głęboko, aktywizować skojarzenia i „dać do myślenia”. Rzecz coraz rzadsza w sztuce współczesnej, bezcenna.</p>
-                <p class="quote-author">Piotr Lachmann<br><span class="quote-source">poeta/dramatopisarz/reżyser, Warszawa 9.07.2023</span></p>
+                        <p class="quote">The dominant themes of her prints, drawings and paintings concern the polarities of spirit and matter, earth and air, internal and external, knowledge and intuition, faith and despair, freedom and entrapment. These are explored through colours which move from earthbound umbers, ochres and deep red/browns to transcendental grey/blues. Space is created through texture; carefully worked areas suggestive of patina and ageing are contrasted with broader areas of brushwork. The repeated motifs of mask and cage convey trapped public faces and private emotions; The mask, symbol of personal identity, exists within undefinable space; free-floating and directionless. Other works depict man’s relationship with nature, enveloped and protected, yet at the same time vulnerable and mortal.’</p>
+                    <p class="quote-author">Fiona Hackney/David Crowley<br><span class="quote-source">for the show „Do I Dare to disturb the Universe?” at The Richard Demarco Gallery, Edinburgh, 15th-21st March 1990</span></p>
+
+                    <p class="quote">Najbardziej lubię te prace Marii, które są migawkowe, niedogadane. Niby oszczędne, a hojne w horyzont, który otwierają jakby od niechcenia. Choćby ten niepozorny Ikar, taki daleki od wszystkich ikarowych uniesień i upadków. Na luzie, ale czy zrezygnowany czy też gotujący się do próby lotu do dalekiej Sycylii. A może robi kupę przed odlotem?</p>
+                    <p class="quote">Sprowadzam, śladem Marii, tego Ikara na ziemię. Która jest częścią Wszechświata, stworzonego mie wiadomo kiedy i przez kogo? Maria dotyka tej tajemnicy w cyklu rysunkoów, też bardzo oszczędnych a przepastnych, jak wszechświat? Cykl „Powstanie świata” jest dla mnie kobiecą wersją kosmogonii. Artystka rodzi Kosmos, z jej ciała bierze się Wszystko.</p>
+                    <p class="quote">A może to tylko męski odbiór, wynikający z upośledzenia niemożności rodzenia samemu? Dużo znajduję humoru w tych pracach, niekiedy jakby satyrycznych.  Ale jest to ten humor, który miał na myśli Eta Hoffmann  mówiąc o pochodzeniu humoru „z psychiki śmiertelnie ranionej”.</p>
+                    <p class="quote">Nie chcę niczego takiego imputować Marii, jednak wiele prac to właśnie sugeruje. Pozornie powierzchniowe by nie powiedzieć powierzchowne  muśnięcie tuszu po papierze potrafi wnikać głęboko, aktywizować skojarzenia i „dać do myślenia”. Rzecz coraz rzadsza w sztuce współczesnej, bezcenna.</p>
+                    <p class="quote-author">Piotr Lachmann<br><span class="quote-source">poeta/dramatopisarz/reżyser, Warszawa 9.07.2023</span></p>
+                </div>
             </div>
         </div>
     </div>
