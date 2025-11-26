@@ -226,28 +226,46 @@
         }
 
         .nav-btn {
-            background: transparent;
-            border: 2px solid #fff;
+            background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
+            border: 2px solid rgba(255, 255, 255, 0.8);
             color: #fff;
             width: 52px;
             height: 52px;
             border-radius: 50%;
-            font-size: 26px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background .2s ease, color .2s ease;
+            transition: background .2s ease, color .2s ease, transform .2s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+            backdrop-filter: blur(6px);
+        }
+
+        .nav-btn svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            stroke-width: 2.4;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .nav-btn:hover {
             background: #fff;
             color: #000;
+            transform: translateY(-2px);
         }
 
         .nav-btn[disabled] {
             opacity: 0.3;
             cursor: not-allowed;
+            transform: none;
+        }
+
+        .nav-btn--hidden {
+            opacity: 0;
+            pointer-events: none;
         }
 
         @keyframes fadeIn {
@@ -358,22 +376,38 @@
     <div id="sekcja2" class="section painting-section">
         <h1>Malarstwo</h1>
         <div class="painting-wrapper">
-            <button class="nav-btn" id="prevPainting" aria-label="Poprzedni obraz">&#8592;</button>
+            <button class="nav-btn nav-btn--hidden" id="prevPainting" aria-label="Poprzedni obraz">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M15.5 5l-7 7 7 7" />
+                </svg>
+            </button>
             <div class="painting-frame">
                 <img id="paintingImage" src="" alt="Obraz malarstwa" loading="lazy">
             </div>
-            <button class="nav-btn" id="nextPainting" aria-label="Następny obraz">&#8594;</button>
+            <button class="nav-btn" id="nextPainting" aria-label="Następny obraz">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M8.5 5l7 7-7 7" />
+                </svg>
+            </button>
         </div>
         <div class="painting-caption" id="paintingCaption"></div>
     </div>
     <div id="sekcja3" class="section painting-section">
         <h1>Grafika i rysunek</h1>
         <div class="painting-wrapper">
-            <button class="nav-btn" id="prevDrawing" aria-label="Poprzednia grafika">&#8592;</button>
+            <button class="nav-btn nav-btn--hidden" id="prevDrawing" aria-label="Poprzednia grafika">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M15.5 5l-7 7 7 7" />
+                </svg>
+            </button>
             <div class="painting-frame">
                 <img id="drawingImage" src="" alt="Grafika lub rysunek" loading="lazy">
             </div>
-            <button class="nav-btn" id="nextDrawing" aria-label="Następna grafika">&#8594;</button>
+            <button class="nav-btn" id="nextDrawing" aria-label="Następna grafika">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M8.5 5l7 7-7 7" />
+                </svg>
+            </button>
         </div>
         <div class="painting-caption" id="drawingCaption"></div>
     </div>
@@ -497,6 +531,7 @@
         }) => {
             const items = [];
             let currentIndex = 0;
+            let hasMovedForward = false;
 
             const updateView = () => {
                 if (!items.length) return;
@@ -505,6 +540,7 @@
                 imageElement.alt = current.caption;
                 captionElement.textContent = current.caption;
 
+                prevButton.classList.toggle("nav-btn--hidden", !hasMovedForward);
                 prevButton.disabled = currentIndex === 0;
                 nextButton.disabled = currentIndex === items.length - 1;
             };
@@ -550,6 +586,7 @@
             nextButton.addEventListener("click", () => {
                 if (currentIndex < items.length - 1) {
                     currentIndex += 1;
+                    hasMovedForward = true;
                     updateView();
                 }
             });
