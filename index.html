@@ -77,6 +77,8 @@
 
         .home-section {
             background: url('obrazy/IMG_4767.jpeg') center/cover no-repeat;
+            margin-left: 0;              /* tło startuje od samej krawędzi */
+            padding-left: 360px;         /* rezerwacja miejsca na menu + oddech */
         }
 
         /* KONTAKT */
@@ -275,6 +277,10 @@
 
             .biography-section .bio-visual {
                 min-height: 320px;
+            }
+
+            .home-section {
+                padding-left: 20px; /* bez dodatkowego marginesu na mobile */
             }
 
             .painting-wrapper {
