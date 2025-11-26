@@ -65,6 +65,92 @@
             display: block;
         }
 
+        .section-title-block {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-size: 28pt;
+            text-transform: lowercase;
+            margin: 0;
+        }
+
+        .accent-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .accent {
+            display: block;
+            width: 36px;
+            height: 8px;
+            border-radius: 2px;
+        }
+
+        .accent-yellow { background: #FFD800; }
+        .accent-red { background: #C62828; }
+        .accent-blue { background: #0277BD; }
+
+        .exhibitions-wrapper {
+            background: #fff;
+            max-width: 920px;
+            padding: 28px 36px 12px;
+            line-height: 1.5;
+            color: #1f1f1f;
+        }
+
+        .exhibition-group {
+            margin-bottom: 22px;
+        }
+
+        .exhibition-group h3 {
+            font-size: 16pt;
+            letter-spacing: 0.5px;
+            margin: 0 0 10px;
+        }
+
+        .exhibition-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+            font-size: 14pt;
+            margin-bottom: 6px;
+        }
+
+        .exhibition-title {
+            font-weight: bold;
+        }
+
+        .exhibition-date {
+            color: #555;
+        }
+
+        .reviews {
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            font-size: 14pt;
+        }
+
+        .quote {
+            margin: 0;
+            text-indent: 0;
+        }
+
+        .quote-author {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .quote-source {
+            font-weight: normal;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to   { opacity: 1; transform: translateY(0); }
@@ -148,44 +234,76 @@ Eksploruję złożone i piękne strony ludzkiej natury. Moje intensywne kolory, 
 </p></div>
     <div id="sekcja2" class="section"><h1>Malarstwo</h1><p>Treść…</p></div>
     <div id="sekcja3" class="section"><h1>Grafika i rysunek</h1><p>Treść…</p></div>
-    <div id="sekcja4" class="section"><h1>Wystawy</h1><p>WYSTAWY INDYWIDUALNE:
-,Monolith’ in the Polish Cultural Institute, London, 7th-27th September 1990
-,Do I Dare to disturb the Universe?’ at The Richard Demarco Gallery, Edinburgh, 
-15th-21st March 1990
+    <div id="sekcja4" class="section">
+        <div class="section-title-block">
+            <div class="accent-stack">
+                <span class="accent accent-yellow"></span>
+                <span class="accent accent-red"></span>
+                <span class="accent accent-blue"></span>
+            </div>
+            <h1 class="section-title">wystawy i recenzje</h1>
+        </div>
 
-WYSTAWY GRUPOWE:
-,Prints’, Gloucestershire College of Arts & Technology, U.K., 1989
-Grafiki’ Akademia Sztuk Pięknych w Warszawie, Polska, 18th-31th December 1989
-M.A. Printmaking Final Show, University of Brighton, U.K., June1990
-,Art for Offices’, London, U.K., 1991
-,No Easy Answers’, Smith’s Gallery, Covent Garden, London, U.K., 1991
+        <div class="exhibitions-wrapper">
+            <div class="exhibition-group">
+                <h3>WYSTAWY INDYWIDUALNE:</h3>
+                <div class="exhibition-item">
+                    <span class="exhibition-title">„Monolith”</span>
+                    <span class="exhibition-place">The Polish Cultural Institute, London</span>
+                    <span class="exhibition-date">7th-27th September 1990</span>
+                </div>
+                <div class="exhibition-item">
+                    <span class="exhibition-title">„Do I Dare to disturb the Universe?”</span>
+                    <span class="exhibition-place">The Richard Demarco Gallery, Edinburgh</span>
+                    <span class="exhibition-date">15th-21st March 1990</span>
+                </div>
+            </div>
 
+            <div class="exhibition-group">
+                <h3>WYSTAWY GRUPOWE:</h3>
+                <div class="exhibition-item">
+                    <span class="exhibition-title">„Prints”</span>
+                    <span class="exhibition-place">Gloucestershire College of Arts &amp; Technology, U.K.</span>
+                    <span class="exhibition-date">1989</span>
+                </div>
+                <div class="exhibition-item">
+                    <span class="exhibition-title">„Grafiki”</span>
+                    <span class="exhibition-place">Akademia Sztuk Pięknych w Warszawie, Polska</span>
+                    <span class="exhibition-date">18th-31th December 1989</span>
+                </div>
+                <div class="exhibition-item">
+                    <span class="exhibition-title">M.A. Printmaking Final Show</span>
+                    <span class="exhibition-place">University of Brighton, U.K.</span>
+                    <span class="exhibition-date">June 1990</span>
+                </div>
+                <div class="exhibition-item">
+                    <span class="exhibition-title">„Art for Offices”</span>
+                    <span class="exhibition-place">London, U.K.</span>
+                    <span class="exhibition-date">1991</span>
+                </div>
+                <div class="exhibition-item">
+                    <span class="exhibition-title">„No Easy Answers”</span>
+                    <span class="exhibition-place">Smith’s Gallery, Covent Garden, London, U.K.</span>
+                    <span class="exhibition-date">1991</span>
+                </div>
+            </div>
 
-The art of Maria Bartkowiak/Kowalewska embodies the essence of the culture out of wich it springs.It is charged with a consuming emotion that is leavened by her manifest interest and knowledge of contemporary throught concerning the visual arts. Her work is a rich admixture of ideas concerning both the formal way in which a work of art conveys itself to the spectator and a view of life or rather a perception of being, that is both personal and informed. 
-This makes her work readily accsesible to anyone but most particularly to those interested 
-in the fundamental nature of existence.’
+            <div class="reviews">
+                <p class="quote">The art of Maria Bartkowiak/Kowalewska embodies the essence of the culture out of wich it springs.It is charged with a consuming emotion that is leavened by her manifest interest and knowledge of contemporary throught concerning the visual arts. Her work is a rich admixture of ideas concerning both the formal way in which a work of art conveys itself to the spectator and a view of life or rather a perception of being, that is both personal and informed.</p>
+                <p class="quote">This makes her work readily accsesible to anyone but most particularly to those interested in the fundamental nature of existence.’</p>
+                <p class="quote-author">Lawrence Preece<br><span class="quote-source">for the exhibition „Monolith” in the Polish Cultural Institute, London, 7th-27th September 1990</span></p>
 
-Lawrence Preece 
-for the exhibition ,Monolith’ in the Polish Cultural Institute, London, 7th-27th September 1990 
+                <p class="quote">The dominant themes of her prints, drawings and paintings concern the polarities of spirit and matter, earth and air, internal and external, knowledge and intuition, faith and despair, freedom and entrapment. These are explored trought colours which move from earthbound umbers, ochres and deep red/browns to transcendental grey/blues. Space is created throught texture; carefully worked areas suggestive of patina and ageing are contrasted with broader areas of brushwork. The repeated motifs of mask and cage convey trapped public faces and private emotions; The mask, symbol of personal identity, exists within undefinable space; freefloating and directionless. Other works depict man’s relationship with nature, enveloped and protected, yet at the same time vulnerable and mortal.’</p>
+                <p class="quote-author">Fiona Hackney/David Crowley<br><span class="quote-source">for the show „Do I Dare to disturb the Universe?” at The Richard Demarco Gallery, Edinburgh, 15th-21st March 1990</span></p>
 
-The dominant themes of her prints, drawings and paintings concern the polarities of spirit and matter, earth and air, internal and external, knowledge and intuition, faith and despair, freedom and entrapment. These are explored trought colours which move from earthbound umbers, ochres and deep red/browns to transcendental grey/blues.Space is created throught texture; carefully worked areas suggestive of patina and ageing are contrasted with broader areas of brushwork. The repeated motifs of mask and cage convey trapped public faces and private emotions; The mask, symbol of personal identity, exists within undefinable space; freefloating and directionless. Other works depict man’s relationship with nature, enveloped and protected, yet at the same time vulnerable and mortal.’
-
-Fiona Hackney/David Crowley
-for the show ,Do I Dare to disturb the Universe?’ at The Richard Demarco Gallery, Edinburgh, 
-15th-21st March 1990 
-
-Najbardziej lubię te prace Marii, które są migawkowe, niedogadane. Niby oszczędne, a hojne w horyzont, który otwierają jakby od niechcenia. Choćby ten niepozorny Ikar, taki daleki od wszystkich ikarowych uniesień i upadków. Na luzie, ale czy zrezygnowany czy też gotujący się do próby lotu do dalekiej Sycylii. A może robi kupę przed odlotem? 
-Sprowadzam, śladem Marii, tego Ikara na ziemię. Która jest częścią Wszechświata, stworzonego mie wiadomo kiedy i przez kogo? Maria dotyka tej tajemnicy w cyklu rysunkoów, też bardzo oszczędnych a przepastnych, jak wszechświat? Cykl „Powstanie świata” jest dla mnie kobiecą wersją kosmogonii. Artystka rodzi Kosmos, z jej ciała bierze się Wszystko.
-A może to tylko męski odbiór, wynikający z upośledzenia niemożności rodzenia samemu? Dużo znajduję humoru w tych pracach, niekiedy jakby satyrycznych.  Ale jest to ten humor, który miał na myśli Eta Hoffmann  mówiąc o pochodzeniu humoru „z psychiki śmiertelnie ranionej”.
-Nie chcę niczego takiego imputować Marii, jednak wiele prac to właśnie sugeruje. Pozornie powierzchniowe by nie powiedzieć powierzchowne  muśnięcie tuszu po papierze potrafi wnikać głęboko, aktywizować skojarzenia i „dać do myślenia”. 
-Rzecz coraz rzadsza w sztuce współczesnej, bezcenna.
-
-Piotr Lachmann
-poeta/dramatopisarz/reżyser, Warszawa 9.07.2023
-
-
-
-</p></div>
+                <p class="quote">Najbardziej lubię te prace Marii, które są migawkowe, niedogadane. Niby oszczędne, a hojne w horyzont, który otwierają jakby od niechcenia. Choćby ten niepozorny Ikar, taki daleki od wszystkich ikarowych uniesień i upadków. Na luzie, ale czy zrezygnowany czy też gotujący się do próby lotu do dalekiej Sycylii. A może robi kupę przed odlotem?</p>
+                <p class="quote">Sprowadzam, śladem Marii, tego Ikara na ziemię. Która jest częścią Wszechświata, stworzonego mie wiadomo kiedy i przez kogo? Maria dotyka tej tajemnicy w cyklu rysunkoów, też bardzo oszczędnych a przepastnych, jak wszechświat? Cykl „Powstanie świata” jest dla mnie kobiecą wersją kosmogonii. Artystka rodzi Kosmos, z jej ciała bierze się Wszystko.</p>
+                <p class="quote">A może to tylko męski odbiór, wynikający z upośledzenia niemożności rodzenia samemu? Dużo znajduję humoru w tych pracach, niekiedy jakby satyrycznych.  Ale jest to ten humor, który miał na myśli Eta Hoffmann  mówiąc o pochodzeniu humoru „z psychiki śmiertelnie ranionej”.</p>
+                <p class="quote">Nie chcę niczego takiego imputować Marii, jednak wiele prac to właśnie sugeruje. Pozornie powierzchniowe by nie powiedzieć powierzchowne  muśnięcie tuszu po papierze potrafi wnikać głęboko, aktywizować skojarzenia i „dać do myślenia”. Rzecz coraz rzadsza w sztuce współczesnej, bezcenna.</p>
+                <p class="quote-author">Piotr Lachmann<br><span class="quote-source">poeta/dramatopisarz/reżyser, Warszawa 9.07.2023</span></p>
+            </div>
+        </div>
+    </div>
     <div id="sekcja5" class="section"><h1>Kontakt</h1><p>Treść…</p></div>
 
     <script>
