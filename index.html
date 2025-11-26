@@ -28,10 +28,12 @@
 
         .menu-item {
             display: grid;
-            grid-template-columns: 180px auto; /* BLOK KOLORU + TEKST */
+            grid-template-columns: 180px 1fr; /* BLOK KOLORU + TEKST */
             align-items: center;
             cursor: pointer;
             transition: opacity .3s ease;
+            width: 100%;               /* KAŻDA LINIJKA JEST TAK SAMO SZEROKA */
+            max-width: 260px;          /* RÓWNA SZEROKOŚĆ MENU */
         }
 
         .menu-item:hover {
