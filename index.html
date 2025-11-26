@@ -174,6 +174,62 @@
             display: block;
         }
 
+        /* BIOGRAFIA */
+        .biography-section .bio-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 36px;
+            align-items: stretch;
+        }
+
+        .biography-section .bio-text {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .biography-section .bio-text h1 {
+            margin: 0;
+        }
+
+        .biography-section .bio-visual {
+            /* Podmień ścieżkę w zmiennej --bio-image-url na własny plik */
+            --bio-image-url: url('obrazy/biografia.jpg');
+
+            position: relative;
+            min-height: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+            background-image: linear-gradient(135deg, rgba(245,245,245,0.9), rgba(224,224,224,0.9)), var(--bio-image-url);
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .biography-section .bio-visual::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.05));
+        }
+
+        .biography-section .bio-visual .placeholder-label {
+            position: absolute;
+            right: 18px;
+            bottom: 18px;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.85);
+            border-radius: 8px;
+            font-size: 12px;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #444;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
         /* MALARSTWO */
         .painting-section {
             background: #000;
@@ -261,6 +317,14 @@
                 padding: 40px 20px;
             }
 
+            .biography-section .bio-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .biography-section .bio-visual {
+                min-height: 320px;
+            }
+
             .painting-wrapper {
                 flex-direction: column;
                 gap: 16px;
@@ -314,16 +378,26 @@
 
     <!-- SEKCJE -->
     <div id="sekcja0" class="section active"><h1 style="font-family: Arial, sans-serif; font-size: 44pt; color: red;">Maria B. Kowalewska</h1><p>Treść…</p></div>
-    <div id="sekcja1" class="section"><h1>Biografia</h1><p>Jestem absolwentką wydziału Architektury Wnętrz Warszawskiej Akademii Sztuk Pięknych, 1983-1988, dyplom M.A. z wyróżnieniem, w pracowni prof. R.Guta i prof. Grzegorza   Pabla, oraz Grafiki Warsztatowej M.A. na University of Brighton, Wielka Brytania, 1988-1991, dyplom z wyróżnieniem. 
-Prace z tamtych lat są jak zdania zaczęte z dużej litery i… przerwane w pół. Najważniejsze tematy to dualizm natury ludzkiej i delikatne sąsiadowanie pierwiastka boskiego i ziemskiego. Mają uniwersalną, ponadczasową wymowę. 
-Moje pierwsze indywidualne wystawy miały miejsce w Londynie i Edynburgu. 
+    <div id="sekcja1" class="section biography-section">
+        <div class="bio-layout">
+            <div class="bio-text">
+                <h1>Biografia</h1>
+                <p>Jestem absolwentką wydziału Architektury Wnętrz Warszawskiej Akademii Sztuk Pięknych, 1983-1988, dyplom M.A. z wyróżnieniem, w pracowni prof. R.Guta i prof. Grzegorza   Pabla, oraz Grafiki Warsztatowej M.A. na University of Brighton, Wielka Brytania, 1988-1991, dyplom z wyróżnieniem.
+                Prace z tamtych lat są jak zdania zaczęte z dużej litery i… przerwane w pół. Najważniejsze tematy to dualizm natury ludzkiej i delikatne sąsiadowanie pierwiastka boskiego i ziemskiego. Mają uniwersalną, ponadczasową wymowę.
+                Moje pierwsze indywidualne wystawy miały miejsce w Londynie i Edynburgu.
 
-Po latach pracy w agencjach reklamowych jako Dyrektor Kreatywny i Konsultant Krea- tywny (1995-2004), w 1997 roku założyłam własną pracownię wnętrzarską  TUTITUT U (tutitutu.pl). Mam w dorobku projekty i realizacje wnętrz willi, apartamentów, kawiarni, biur, miejsc użyteczności publicznej (w tym ogólnopolskiej. sieci salonów jednego z największych dealerów samochodowych w Polsce) a także elewacji budynków mieszkalnych i biurowych. 
+                Po latach pracy w agencjach reklamowych jako Dyrektor Kreatywny i Konsultant Krea- tywny (1995-2004), w 1997 roku założyłam własną pracownię wnętrzarską  TUTITUT U (tutitutu.pl). Mam w dorobku projekty i realizacje wnętrz willi, apartamentów, kawiarni, biur, miejsc użyteczności publicznej (w tym ogólnopolskiej. sieci salonów jednego z największych dealerów samochodowych w Polsce) a także elewacji budynków mieszkalnych i biurowych.
 
-W roku 2020 wróciłam do komunikowania się ze światem językiem sztuki. Powróciły egzystencjalne pytania jakie sobie od lat zadaję: o sens istnienia, tożsamość i relację 
-z transcendencją. Ważny jest dla mnie temat dualizmu natury ludzkiej, sąsiadowania pierwiastka boskiego i ziemskiego. Celebruję życie przez malarstwo, tworząc obrazy które są jest afirmacją pozytywnych emocji, wewnętrznej siły, miłości, radości i dobra. 
-Eksploruję złożone i piękne strony ludzkiej natury. Moje intensywne kolory, bogate tekstury symbolizują pasję, moc, spokój.
-</p></div>
+                W roku 2020 wróciłam do komunikowania się ze światem językiem sztuki. Powróciły egzystencjalne pytania jakie sobie od lat zadaję: o sens istnienia, tożsamość i relację
+                z transcendencją. Ważny jest dla mnie temat dualizmu natury ludzkiej, sąsiadowania pierwiastka boskiego i ziemskiego. Celebruję życie przez malarstwo, tworząc obrazy które są jest afirmacją pozytywnych emocji, wewnętrznej siły, miłości, radości i dobra.
+                Eksploruję złożone i piękne strony ludzkiej natury. Moje intensywne kolory, bogate tekstury symbolizują pasję, moc, spokój.
+                </p>
+            </div>
+            <div class="bio-visual" aria-hidden="true">
+                <span class="placeholder-label">Miejsce na grafikę biografii (ustaw w --bio-image-url)</span>
+            </div>
+        </div>
+    </div>
     <div id="sekcja2" class="section painting-section">
         <h1>Malarstwo</h1>
         <div class="painting-wrapper">
