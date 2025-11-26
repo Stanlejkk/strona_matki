@@ -13,6 +13,11 @@
             overflow-x: hidden;
         }
 
+        body.painting-mode {
+            background: #000;
+            color: #fff;
+        }
+
         /* MENU */
         .side-menu {
             position: fixed;
@@ -50,6 +55,10 @@
             font-size: 18pt;
             padding-left: 10px;
             white-space: nowrap;
+        }
+
+        body.painting-mode .menu-text {
+            color: #fff;
         }
 
         /* SEKCJE */
@@ -165,6 +174,65 @@
             display: block;
         }
 
+        /* MALARSTWO */
+        .painting-section {
+            background: #000;
+            color: #fff;
+        }
+
+        .painting-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+
+        .painting-frame {
+            max-width: 70vw;
+            border: 8px solid #fff;
+            background: #111;
+            padding: 12px;
+        }
+
+        .painting-frame img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .painting-caption {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 18px;
+            min-height: 48px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            font-size: 26px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background .2s ease, color .2s ease;
+        }
+
+        .nav-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .nav-btn[disabled] {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to   { opacity: 1; transform: translateY(0); }
@@ -193,12 +261,14 @@
                 padding: 40px 20px;
             }
 
-            .contact-wrapper {
-                grid-template-columns: 1fr;
+            .painting-wrapper {
+                flex-direction: column;
+                gap: 16px;
             }
 
-            .contact-card {
-                flex-direction: column;
+            .nav-btn {
+                width: 44px;
+                height: 44px;
             }
         }
 
@@ -254,89 +324,75 @@ W roku 2020 wróciłam do komunikowania się ze światem językiem sztuki. Powr�
 z transcendencją. Ważny jest dla mnie temat dualizmu natury ludzkiej, sąsiadowania pierwiastka boskiego i ziemskiego. Celebruję życie przez malarstwo, tworząc obrazy które są jest afirmacją pozytywnych emocji, wewnętrznej siły, miłości, radości i dobra. 
 Eksploruję złożone i piękne strony ludzkiej natury. Moje intensywne kolory, bogate tekstury symbolizują pasję, moc, spokój.
 </p></div>
-    <div id="sekcja2" class="section"><h1>Malarstwo</h1><p>Treść…</p></div>
+    <div id="sekcja2" class="section painting-section">
+        <h1>Malarstwo</h1>
+        <div class="painting-wrapper">
+            <button class="nav-btn" id="prevPainting" aria-label="Poprzedni obraz">&#8592;</button>
+            <div class="painting-frame">
+                <img id="paintingImage" src="" alt="Obraz malarstwa" loading="lazy">
+            </div>
+            <button class="nav-btn" id="nextPainting" aria-label="Następny obraz">&#8594;</button>
+        </div>
+        <div class="painting-caption" id="paintingCaption"></div>
+    </div>
     <div id="sekcja3" class="section"><h1>Grafika i rysunek</h1><p>Treść…</p></div>
-    <div id="sekcja4" class="section"><h1>Wystawy</h1><p>WYSTAWY INDYWIDUALNE:
-,Monolith’ in the Polish Cultural Institute, London, 7th-27th September 1990
-,Do I Dare to disturb the Universe?’ at The Richard Demarco Gallery, Edinburgh, 
-15th-21st March 1990
-
-WYSTAWY GRUPOWE:
-,Prints’, Gloucestershire College of Arts & Technology, U.K., 1989
-Grafiki’ Akademia Sztuk Pięknych w Warszawie, Polska, 18th-31th December 1989
-M.A. Printmaking Final Show, University of Brighton, U.K., June1990
-,Art for Offices’, London, U.K., 1991
-,No Easy Answers’, Smith’s Gallery, Covent Garden, London, U.K., 1991
-
-
-The art of Maria Bartkowiak/Kowalewska embodies the essence of the culture out of wich it springs.It is charged with a consuming emotion that is leavened by her manifest interest and knowledge of contemporary throught concerning the visual arts. Her work is a rich admixture of ideas concerning both the formal way in which a work of art conveys itself to the spectator and a view of life or rather a perception of being, that is both personal and informed. 
-This makes her work readily accsesible to anyone but most particularly to those interested 
-in the fundamental nature of existence.’
-
-Lawrence Preece 
-for the exhibition ,Monolith’ in the Polish Cultural Institute, London, 7th-27th September 1990 
-
-The dominant themes of her prints, drawings and paintings concern the polarities of spirit and matter, earth and air, internal and external, knowledge and intuition, faith and despair, freedom and entrapment. These are explored trought colours which move from earthbound umbers, ochres and deep red/browns to transcendental grey/blues.Space is created throught texture; carefully worked areas suggestive of patina and ageing are contrasted with broader areas of brushwork. The repeated motifs of mask and cage convey trapped public faces and private emotions; The mask, symbol of personal identity, exists within undefinable space; freefloating and directionless. Other works depict man’s relationship with nature, enveloped and protected, yet at the same time vulnerable and mortal.’
-
-Fiona Hackney/David Crowley
-for the show ,Do I Dare to disturb the Universe?’ at The Richard Demarco Gallery, Edinburgh, 
-15th-21st March 1990 
-
-Najbardziej lubię te prace Marii, które są migawkowe, niedogadane. Niby oszczędne, a hojne w horyzont, który otwierają jakby od niechcenia. Choćby ten niepozorny Ikar, taki daleki od wszystkich ikarowych uniesień i upadków. Na luzie, ale czy zrezygnowany czy też gotujący się do próby lotu do dalekiej Sycylii. A może robi kupę przed odlotem? 
-Sprowadzam, śladem Marii, tego Ikara na ziemię. Która jest częścią Wszechświata, stworzonego mie wiadomo kiedy i przez kogo? Maria dotyka tej tajemnicy w cyklu rysunkoów, też bardzo oszczędnych a przepastnych, jak wszechświat? Cykl „Powstanie świata” jest dla mnie kobiecą wersją kosmogonii. Artystka rodzi Kosmos, z jej ciała bierze się Wszystko.
-A może to tylko męski odbiór, wynikający z upośledzenia niemożności rodzenia samemu? Dużo znajduję humoru w tych pracach, niekiedy jakby satyrycznych.  Ale jest to ten humor, który miał na myśli Eta Hoffmann  mówiąc o pochodzeniu humoru „z psychiki śmiertelnie ranionej”.
-Nie chcę niczego takiego imputować Marii, jednak wiele prac to właśnie sugeruje. Pozornie powierzchniowe by nie powiedzieć powierzchowne  muśnięcie tuszu po papierze potrafi wnikać głęboko, aktywizować skojarzenia i „dać do myślenia”. 
-Rzecz coraz rzadsza w sztuce współczesnej, bezcenna.
-
-Piotr Lachmann
-poeta/dramatopisarz/reżyser, Warszawa 9.07.2023
-
-
-
-</p></div>
-    <div id="sekcja5" class="section">
-        <div class="contact-banner">
-            <img src="obrazy/1.jpg" alt="Wzór dekoracyjny" />
+    <div id="sekcja4" class="section">
+        <div class="section-title-block">
+            <div class="accent-stack">
+                <span class="accent accent-yellow"></span>
+                <span class="accent accent-red"></span>
+                <span class="accent accent-blue"></span>
+            </div>
+            <h1 class="section-title">wystawy i recenzje</h1>
         </div>
 
-        <div class="contact-wrapper">
-            <div class="contact-palette">
-                <div class="palette-item"><span class="palette-color" style="background:#BDBDBD"></span>strona główna</div>
-                <div class="palette-item"><span class="palette-color" style="background:#FFD800"></span>biografia</div>
-                <div class="palette-item"><span class="palette-color" style="background:#C62828"></span>malarstwo</div>
-                <div class="palette-item"><span class="palette-color" style="background:#0277BD"></span>grafika i rysunek</div>
-                <div class="palette-item"><span class="palette-color" style="background:#D81B60"></span>wystawy</div>
-                <div class="palette-item"><span class="palette-color" style="background:#2E7D32"></span>kontakt</div>
+        <div class="exhibitions-wrapper">
+            <div class="exhibition-group">
+                <h3>WYSTAWY INDYWIDUALNE:</h3>
+                <div class="exhibition-lines">
+                    <div class="exhibition-line"><strong>„Monolith”</strong> in the Polish Cultural Institute, London, 7th-27th September 1990</div>
+                    <div class="exhibition-line"><strong>„Do I Dare to disturb the Universe?”</strong> at The Richard Demarco Gallery, Edinburgh, 15th-21st March 1990</div>
+                </div>
             </div>
 
-            <div class="contact-card">
-                <div class="contact-details">
-                    <h2>Maria B. Kowalewska</h2>
-                    <p>mariabkowalewska.pl</p>
-                    <p><strong>+48 602 767 720</strong></p>
-                    <p>tutitutu@tutitutu.pl</p>
-                    <p>tutitutu.pl</p>
-
-                    <div class="contact-icons">
-                        <div class="contact-icon"><span>IG</span>instagram</div>
-                        <div class="contact-icon"><span>FB</span>facebook</div>
-                        <div class="contact-icon"><span>LN</span>linkedin</div>
-                        <div class="contact-icon"><span>YT</span>youtube</div>
-                        <div class="contact-icon"><span>WA</span>whatsapp</div>
-                        <div class="contact-icon"><span>SC</span>snapchat</div>
-                    </div>
+            <div class="exhibition-group">
+                <h3>WYSTAWY GRUPOWE:</h3>
+                <div class="exhibition-lines">
+                    <div class="exhibition-line"><strong>„Prints”</strong>, Gloucestershire College of Arts &amp; Technology, U.K., 1989</div>
+                    <div class="exhibition-line"><strong>„Grafiki”</strong>, Akademia Sztuk Pięknych w Warszawie, Polska, 18th-31th December 1989</div>
+                    <div class="exhibition-line"><strong>M.A. Printmaking Final Show</strong>, University of Brighton, U.K., June 1990</div>
+                    <div class="exhibition-line"><strong>„Art for Offices”</strong>, London, U.K., 1991</div>
+                    <div class="exhibition-line"><strong>„No Easy Answers”</strong>, Smith’s Gallery, Covent Garden, London, U.K., 1991</div>
                 </div>
+            </div>
 
-                <div class="contact-qr">
-                    <img src="obrazy/1.jpg" alt="Losowy obraz zamiast kodu QR" />
-                </div>
+                <div class="reviews">
+                    <p class="quote">The art of Maria Bartkowiak/Kowalewska embodies the essence of the culture out of which it springs. It is charged with a consuming emotion that is leavened by her manifest interest and knowledge of contemporary thought concerning the visual arts. Her work is a rich admixture of ideas concerning both the formal way in which a work of art conveys itself to the spectator and a view of life or rather a perception of being, that is both personal and informed.</p>
+                    <p class="quote">This makes her work readily accessible to anyone but most particularly to those interested in the fundamental nature of existence.’</p>
+                <p class="quote-author">Lawrence Preece<br><span class="quote-source">for the exhibition „Monolith” in the Polish Cultural Institute, London, 7th-27th September 1990</span></p>
+
+                    <p class="quote">The dominant themes of her prints, drawings and paintings concern the polarities of spirit and matter, earth and air, internal and external, knowledge and intuition, faith and despair, freedom and entrapment. These are explored through colours which move from earthbound umbers, ochres and deep red/browns to transcendental grey/blues. Space is created through texture; carefully worked areas suggestive of patina and ageing are contrasted with broader areas of brushwork. The repeated motifs of mask and cage convey trapped public faces and private emotions; The mask, symbol of personal identity, exists within undefinable space; free-floating and directionless. Other works depict man’s relationship with nature, enveloped and protected, yet at the same time vulnerable and mortal.’</p>
+                <p class="quote-author">Fiona Hackney/David Crowley<br><span class="quote-source">for the show „Do I Dare to disturb the Universe?” at The Richard Demarco Gallery, Edinburgh, 15th-21st March 1990</span></p>
+
+                <p class="quote">Najbardziej lubię te prace Marii, które są migawkowe, niedogadane. Niby oszczędne, a hojne w horyzont, który otwierają jakby od niechcenia. Choćby ten niepozorny Ikar, taki daleki od wszystkich ikarowych uniesień i upadków. Na luzie, ale czy zrezygnowany czy też gotujący się do próby lotu do dalekiej Sycylii. A może robi kupę przed odlotem?</p>
+                <p class="quote">Sprowadzam, śladem Marii, tego Ikara na ziemię. Która jest częścią Wszechświata, stworzonego mie wiadomo kiedy i przez kogo? Maria dotyka tej tajemnicy w cyklu rysunkoów, też bardzo oszczędnych a przepastnych, jak wszechświat? Cykl „Powstanie świata” jest dla mnie kobiecą wersją kosmogonii. Artystka rodzi Kosmos, z jej ciała bierze się Wszystko.</p>
+                <p class="quote">A może to tylko męski odbiór, wynikający z upośledzenia niemożności rodzenia samemu? Dużo znajduję humoru w tych pracach, niekiedy jakby satyrycznych.  Ale jest to ten humor, który miał na myśli Eta Hoffmann  mówiąc o pochodzeniu humoru „z psychiki śmiertelnie ranionej”.</p>
+                <p class="quote">Nie chcę niczego takiego imputować Marii, jednak wiele prac to właśnie sugeruje. Pozornie powierzchniowe by nie powiedzieć powierzchowne  muśnięcie tuszu po papierze potrafi wnikać głęboko, aktywizować skojarzenia i „dać do myślenia”. Rzecz coraz rzadsza w sztuce współczesnej, bezcenna.</p>
+                <p class="quote-author">Piotr Lachmann<br><span class="quote-source">poeta/dramatopisarz/reżyser, Warszawa 9.07.2023</span></p>
             </div>
         </div>
     </div>
+    <div id="sekcja5" class="section"><h1>Kontakt</h1><p>Treść…</p></div>
 
     <script>
         const menuItems = document.querySelectorAll(".menu-item");
         const sections = document.querySelectorAll(".section");
+        const body = document.body;
+
+        const applyPaintingMode = (targetId) => {
+            const isPainting = targetId === "sekcja2";
+            body.classList.toggle("painting-mode", isPainting);
+        };
 
         menuItems.forEach(item => {
             item.addEventListener("click", () => {
@@ -347,8 +403,82 @@ poeta/dramatopisarz/reżyser, Warszawa 9.07.2023
 
                 sections.forEach(sec => sec.classList.remove("active"));
                 document.getElementById(target).classList.add("active");
+
+                applyPaintingMode(target);
             });
         });
+
+        const initialActive = document.querySelector(".section.active");
+        if (initialActive) {
+            applyPaintingMode(initialActive.id);
+        }
+
+        /* MALARSTWO – prosty slider z plików obrazy/1.jpg, 2.jpg, ... */
+        const paintingImage = document.getElementById("paintingImage");
+        const paintingCaption = document.getElementById("paintingCaption");
+        const prevPainting = document.getElementById("prevPainting");
+        const nextPainting = document.getElementById("nextPainting");
+
+        const paintingData = [];
+        let currentPaintingIndex = 0;
+
+        const updatePainting = () => {
+            if (!paintingData.length) return;
+            const current = paintingData[currentPaintingIndex];
+            paintingImage.src = current.src;
+            paintingImage.alt = current.caption;
+            paintingCaption.textContent = current.caption;
+
+            prevPainting.disabled = currentPaintingIndex === 0;
+            nextPainting.disabled = currentPaintingIndex === paintingData.length - 1;
+        };
+
+        const loadPaintings = async () => {
+            let index = 1;
+
+            while (index <= 100) {
+                const src = `obrazy/${index}.jpg`;
+
+                try {
+                    const response = await fetch(src, { method: "HEAD" });
+                    if (!response.ok) break;
+
+                    paintingData.push({
+                        src,
+                        caption: `Obraz ${index}`
+                    });
+                    index += 1;
+                } catch (err) {
+                    break;
+                }
+            }
+
+            if (!paintingData.length) {
+                paintingCaption.textContent = "Brak obrazów w katalogu.";
+                prevPainting.disabled = true;
+                nextPainting.disabled = true;
+                paintingImage.alt = "Brak obrazów";
+                return;
+            }
+
+            updatePainting();
+        };
+
+        prevPainting.addEventListener("click", () => {
+            if (currentPaintingIndex > 0) {
+                currentPaintingIndex -= 1;
+                updatePainting();
+            }
+        });
+
+        nextPainting.addEventListener("click", () => {
+            if (currentPaintingIndex < paintingData.length - 1) {
+                currentPaintingIndex += 1;
+                updatePainting();
+            }
+        });
+
+        loadPaintings();
     </script>
 
 </body>
