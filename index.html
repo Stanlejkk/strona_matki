@@ -61,6 +61,94 @@
             animation: fadeIn .5s ease forwards;
         }
 
+        /* KONTAKT */
+        .contact-banner img {
+            width: 100%;
+            max-height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .contact-palette {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .palette-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: lowercase;
+        }
+
+        .palette-color {
+            width: 18px;
+            height: 42px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .contact-card {
+            display: flex;
+            gap: 26px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .contact-details {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .contact-details h2 {
+            font-size: 28pt;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .contact-details p {
+            margin: 6px 0;
+            font-size: 14pt;
+        }
+
+        .contact-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .contact-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #e6e6e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #555;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .contact-qr img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
         .section.active {
             display: block;
         }
@@ -91,6 +179,14 @@
             .section {
                 margin-left: 0;
                 padding: 40px 20px;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card {
+                flex-direction: column;
             }
         }
 
@@ -186,7 +282,41 @@ poeta/dramatopisarz/reżyser, Warszawa 9.07.2023
 
 
 </p></div>
-    <div id="sekcja5" class="section"><h1>Kontakt</h1><p>Treść…</p></div>
+    <div id="sekcja5" class="section">
+        <div class="contact-banner">
+            <img src="obrazy/1.jpg" alt="Wzór dekoracyjny" />
+        </div>
+
+        <div class="contact-wrapper">
+            <div class="contact-palette">
+                <div class="palette-item"><span class="palette-color" style="background:#BDBDBD"></span>strona główna</div>
+                <div class="palette-item"><span class="palette-color" style="background:#FFD800"></span>biografia</div>
+                <div class="palette-item"><span class="palette-color" style="background:#C62828"></span>malarstwo</div>
+                <div class="palette-item"><span class="palette-color" style="background:#0277BD"></span>grafika i rysunek</div>
+                <div class="palette-item"><span class="palette-color" style="background:#D81B60"></span>wystawy</div>
+                <div class="palette-item"><span class="palette-color" style="background:#2E7D32"></span>kontakt</div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-details">
+                    <h2>Maria B. Kowalewska</h2>
+                    <p>mariabkowalewska.pl</p>
+                    <p><strong>+48 602 767 720</strong></p>
+                    <p>tutitutu@tutitutu.pl</p>
+                    <p>tutitutu.pl</p>
+
+                    <div class="contact-icons">
+                        <div class="contact-icon">I</div>
+                        <div class="contact-icon">F</div>
+                    </div>
+                </div>
+
+                <div class="contact-qr">
+                    <img src="obrazy/1.jpg" alt="Losowy obraz zamiast kodu QR" />
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         const menuItems = document.querySelectorAll(".menu-item");
